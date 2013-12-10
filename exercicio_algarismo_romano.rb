@@ -57,5 +57,8 @@ describe RomanosParser do
 			expect { RomanosParser.parser("CCCC") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 			expect { RomanosParser.parser("XXXX") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 		end
+        
+        it "Tentando converter caracteres nao numericos" do
+            expect { Converter.new("abc") }.to raise_error(ArgumentError, "Numero Romano fornecido não existe.")
 	end
 end
