@@ -44,7 +44,16 @@ describe RomanosParser do
 			#end
 		end
 
-		it "retorna valores que podem se repetir: I, X, C, M"
+		it "retorna valores que podem se repetir: I, X, C, M" do
+			expect(RomanosParser.parser("XX")).to eql 20
+			expect(RomanosParser.parser("XXX")).to eql 30
+			expect(RomanosParser.parser("II")).to eql 2
+			expect(RomanosParser.parser("III")).to eql 3
+			expect(RomanosParser.parser("CC")).to eql 200
+			expect(RomanosParser.parser("CCC")).to eql 300
+			expect(RomanosParser.parser("MM")).to eql 2000
+			expect(RomanosParser.parser("MMM")).to eql 3000
+		end
 
 		it "retorna caracteres que não podem se repetir: V, L, D"
 
