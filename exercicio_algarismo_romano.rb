@@ -3,13 +3,19 @@
 class RomanosParser
 
 	@@valores = {
-		"I" => 1,
-		"V" => 5,
-		"X" => 10,
-		"L" => 50,
-		"C" => 100,
+		"M" => 1000,
+		"CM" => 900,
 		"D" => 500,
-		"M" => 1000
+		"CD" => 400,
+		"C" => 100,
+		"XC" => 90,
+		"L" => 50,
+		"XL" => 40,
+		"X" => 10,
+		"IX" => 9,
+		"V" => 5,
+		"IV" => 4,
+		"I" => 1
 	}
 
 	def self.parser numero_romano
@@ -25,7 +31,16 @@ class RomanosParser
 			raise ArgumentError, "Número romano fornecido não existe."
 		end
 
-		@@valores[numero_romano]
+		valor_arabico = 0
+
+		@@valores.each_pair { |key, value|
+			while numero_romano.index(key) == 0
+				valor_arabico += value
+				numero_romano.slice!(key)
+			end
+		}
+
+		valor_arabico
 	end
 end
 
@@ -49,16 +64,16 @@ describe RomanosParser do
 		end
 
 		it "retorna valores que podem se repetir: I, X, C, M" do
-			pending "ajustando teste de valores inválidos antes" do
-				expect(RomanosParser.parser("XX")).to eql 20
-				expect(RomanosParser.parser("XXX")).to eql 30
-				expect(RomanosParser.parser("II")).to eql 2
-				expect(RomanosParser.parser("III")).to eql 3
-				expect(RomanosParser.parser("CC")).to eql 200
-				expect(RomanosParser.parser("CCC")).to eql 300
-				expect(RomanosParser.parser("MM")).to eql 2000
-				expect(RomanosParser.parser("MMM")).to eql 3000
-			end
+			#pending "ajustando teste de valores inválidos antes" do
+			expect(RomanosParser.parser("XX")).to eql 20
+			expect(RomanosParser.parser("XXX")).to eql 30
+			expect(RomanosParser.parser("II")).to eql 2
+			expect(RomanosParser.parser("III")).to eql 3
+			expect(RomanosParser.parser("CC")).to eql 200
+			expect(RomanosParser.parser("CCC")).to eql 300
+			expect(RomanosParser.parser("MM")).to eql 2000
+			expect(RomanosParser.parser("MMM")).to eql 3000
+			#end
 		end
 
 		it "retorna caracteres que não podem se repetir: V, L, D"
@@ -73,7 +88,7 @@ describe RomanosParser do
 			expect { RomanosParser.parser("XXXX") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 		end
         
-        it "Tentando converter caracteres nao numericos" do
+        it "não retorna combinações inválidas" do
             expect { RomanosParser.parser("abc") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
             expect { RomanosParser.parser("b") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
         end
