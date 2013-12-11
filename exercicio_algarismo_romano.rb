@@ -86,9 +86,17 @@ describe RomanosParser do
 			expect { RomanosParser.parser("DD") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 		end
 
-		it "retorna combinações de caracteres que se soma"
+		it "retorna combinacoes de caracteres que se soma" do
+			expect(RomanosParser.parser("VII")).to eql 7
+			expect(RomanosParser.parser("XI")).to eql 11
+			expect(RomanosParser.parser("LX")).to eql 60
+		end
 
-		it "retorna combinações de caracteres que se subtraem"
+		it "retorna combinacoes de caracteres que se subtraem" do
+			expect(RomanosParser.parser("XL")).to eql 40
+			expect(RomanosParser.parser("IX")).to eql 9
+			expect(RomanosParser.parser("IV")).to eql 4
+		end
 
 		it "não retorna combinações impossíveis: IIII, CCCC, XXXX" do
 			expect { RomanosParser.parser("IIII") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
