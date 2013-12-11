@@ -127,7 +127,7 @@ describe RomanosParser do
 		end
 
  		it "não retorna valores inexistentes compostos" do
- 			expect { RomanosParser.parser("AI") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+			expect { RomanosParser.parser("AI") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 			expect { RomanosParser.parser("BV") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 			expect { RomanosParser.parser("FX") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 			expect { RomanosParser.parser("GL") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
