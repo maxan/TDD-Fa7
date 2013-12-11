@@ -27,6 +27,10 @@ class RomanosParser
 			raise ArgumentError, "Número romano fornecido não existe."
 		end
 
+		if (numero_romano.include?("VV") || numero_romano.include?("DD") || numero_romano.include?("LL"))
+			raise ArgumentError, "Número romano fornecido não existe."
+		end
+
 		if (numero_romano.chars.any? { |caractere| !@@valores.has_key?(caractere) })
 			raise ArgumentError, "Número romano fornecido não existe."
 		end
@@ -76,7 +80,11 @@ describe RomanosParser do
 			#end
 		end
 
-		it "retorna caracteres que não podem se repetir: V, L, D"
+		it "não retorna caracteres que não podem se repetir: V, L, D" do
+			expect { RomanosParser.parser("VV") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+			expect { RomanosParser.parser("LL") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+			expect { RomanosParser.parser("DD") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+		end
 
 		it "retorna combinações de caracteres que se soma"
 
