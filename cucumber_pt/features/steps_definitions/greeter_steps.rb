@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CucumberGreeter
 	def greet
 		"Olá Cucumber"
