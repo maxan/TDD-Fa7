@@ -44,6 +44,10 @@ class RomanosParser
 			end
 		}
 
+		if (numero_romano.length > 0)
+			raise ArgumentError, "Número romano fornecido não existe."
+		end
+		
 		valor_arabico
 	end
 end
@@ -104,17 +108,17 @@ describe RomanosParser do
 			expect { RomanosParser.parser("XXXX") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
 		end
         
-        	it "não retorna combinações inválidas" do
-        		expect { RomanosParser.parser("VX") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("VL") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("VC") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("VD") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("VM") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("XD") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("XM") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("LC") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        		expect { RomanosParser.parser("DM") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
-        	end
+    	it "não retorna combinações inválidas" do
+    		expect { RomanosParser.parser("VX") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("VL") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("VC") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("VD") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("VM") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("XD") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("XM") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("LC") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    		expect { RomanosParser.parser("DM") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")
+    	end
 
 		it "não retorna valores inexistentes simples" do
 			expect { RomanosParser.parser("A") }.to raise_error(ArgumentError, "Número romano fornecido não existe.")

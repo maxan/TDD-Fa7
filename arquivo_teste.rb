@@ -97,14 +97,16 @@ class RomanosParser
 		}
 
 		valor_arabico
+		#numero_romano
 	end
 end
 
-puts RomanosParser.parser("MMM")
-puts RomanosParser.parser("MD")
-puts RomanosParser.parser("XLIII")
-puts RomanosParser.parser("LXXXVIII")
-puts RomanosParser.parser("MCMXCIX")
-puts RomanosParser.parser("LXV")
-puts RomanosParser.parser("LXIV")
-puts RomanosParser.parser("XLIV")
+#puts RomanosParser.parser("MMM")
+#puts RomanosParser.parser("MD")
+#puts RomanosParser.parser("XLIII")
+#puts RomanosParser.parser("LXXXVIII")
+#puts RomanosParser.parser("MCMXCIX")
+#puts RomanosParser.parser("LXV")
+#puts RomanosParser.parser("LXIV")
+#puts RomanosParser.parser("XLIV")
+puts RomanosParser.parser("VX")
