@@ -7,18 +7,24 @@ Funcionalidade: RomanosParser converte algarismo romano em arábico
 	Como um desenvolvedor
 	Eu quero converter um algarismo romano em arábico
 
-	Contexto: Nenhum valor fornecido
+	Esquema do Cenário: Nenhum valor fornecido
 		
 		Cenário: RomanosParser recebe vazio
 			Dado nenhum valor
-			Quando Eu envio um "vazio"
-			Então Eu devo ver "número arábico"
+			Quando eu envio um "vazio"
+			Então eu devo ver "Número romano não fornecido"
 
 		Cenário: RomanosParser recebe nulo
 			Dado nulo
-			Quando Eu envio um "nil"
-			Então Eu devo ver "número arábico"
+			Quando eu envio um "nil"
+			Então eu devo ver "Número romano não fornecido"
 
-	Contexto: Algarismo romano inexistente
+	Esquema do Cenário: Recebe valores simples
 
-	Contexto: Algarismo romano existente
+	Esquema do Cenário: Recebe valores que podem se repetir
+
+	Esquema do Cenário: Recebe valores que não podem se repetir
+
+	Esquema do Cenário: Recebe combinações que se somam
+
+	Esquema do Cenário: 
